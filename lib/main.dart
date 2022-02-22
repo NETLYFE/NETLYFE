@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: CustomTheme().lightTheme,
+      supportedLocales: const [Locale("en")],
       home: const SplashView()
     );
   }
