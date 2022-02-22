@@ -9,7 +9,8 @@ class StoreFragment extends StatefulWidget {
 class _StoreFragmentState extends State<StoreFragment> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
         body: Center(child: Text("Store Section"))
     );
   }
