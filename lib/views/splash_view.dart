@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:netlyfe/Utils/screen_intents.dart';
 import 'package:netlyfe/Utils/strings.dart';
+import 'package:netlyfe/views/login_view.dart';
 import 'package:netlyfe/views/onboard_screen_view.dart';
 
 class SplashView extends StatefulWidget {
@@ -18,12 +19,10 @@ class _SplashViewState extends State<SplashView> {
     super.initState();
     navigate();
   }
-
   void navigate() {
     Timer(const Duration(seconds: 4),
-        () => nextScreenReplace(context, const OnboardScreen()));
+        () => nextScreenReplace(context, const LoginView()));
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,8 +46,7 @@ class _SplashViewState extends State<SplashView> {
             ),
             SizedBox(height: 10),
             CircularProgressIndicator(
-              strokeWidth: 3.0,
-            )
+                strokeWidth: 3.0, color: StringData.appThemeColor1)
           ])))
         ],
       ),
