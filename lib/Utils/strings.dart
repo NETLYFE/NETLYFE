@@ -8,9 +8,11 @@ class StringData {
   static const loginText = "Login with Phone Number";
   static const otpText = "Verification";
   static const otpcodeText = "We sent you an SMS code on this number";
+  static const welcomeText = "Can i help you with something?";
 
   static const Color appThemeColor1 = Color.fromRGBO(35, 117, 103, 1);
   static const Color appThemeColor2 = Color.fromRGBO(163, 153, 144, 1);
+  static const Color sophiaColor = Color.fromRGBO(243, 163, 78, 1);
   // static const btnColor =  Color(0x3C8B57);
 
   // static const Color boxColor = Color.fromRGBO(r, g, b, opacity)
