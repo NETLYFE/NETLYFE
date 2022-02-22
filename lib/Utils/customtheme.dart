@@ -18,7 +18,9 @@ class CustomTheme {
         onPrimary: Colors.white, //card -1
         onSecondary: Colors.grey[100]!, //card -2
         surface: Colors.grey[300]!, //shadow color -1
-        onBackground: Colors.grey[300]! //loading card color
+        onBackground: Colors.grey[300]!,
+        tertiary: StringData.sophiaColor
+        //loading card color
         ),
     dividerColor: Colors.grey[300],
     iconTheme: IconThemeData(color: Colors.grey[900]),
