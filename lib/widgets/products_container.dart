@@ -33,8 +33,8 @@ class ProductsContainer extends StatelessWidget {
                         width: 80,
                         height: 80,
                         decoration: const BoxDecoration(
-                          image: DecorationImage(image: AssetImage("assets/drug.png"),fit: BoxFit.cover),
-                          color: Colors.cyan,
+                          image: DecorationImage(image: AssetImage(StringData.drug),fit: BoxFit.cover),
+                          color: Colors.transparent,
                           borderRadius: BorderRadius.all(Radius.circular(12))
                         ),
                       ),
