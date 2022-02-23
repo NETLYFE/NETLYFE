@@ -41,7 +41,6 @@ dependencies:
   animated_bottom_navigation_bar: ^0.3.2
   country_code_picker: ^2.0.2
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -19,7 +19,7 @@ class CustomTheme {
         onSecondary: Colors.grey[100]!, //card -2
         surface: Colors.grey[300]!, //shadow color -1
         onBackground: Colors.grey[300]!,
-        tertiary: StringData.sophiaColor
+        tertiary: StringData.sophiaColor,
         //loading card color
         ),
     dividerColor: Colors.grey[300],

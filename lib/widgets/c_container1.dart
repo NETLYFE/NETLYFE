@@ -11,7 +11,7 @@ class CustomContainer1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 120,
+      height: 130,
       width: double.infinity,
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
@@ -43,6 +43,7 @@ class CustomContainer1 extends StatelessWidget {
                 fontWeight: FontWeight.w400
               ),
             ),
+            const SizedBox(height: 8,),
             const SearchBox()
           ],
         ),
