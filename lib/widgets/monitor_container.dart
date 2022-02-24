@@ -59,7 +59,7 @@ class MonitorContainer extends StatelessWidget {
                   ],
                 ),
               ),
-              Image.asset(StringData.bpmoniimg, width: 80)
+              Image.asset(imageSrc, width: 80)
             ],
           ),
         ),
