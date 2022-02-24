@@ -7,6 +7,7 @@ class StringData {
   static const otpimg = "assets/OTP.jpg";
   static const editimg = "assets/pres.png";
   static const bpmoniimg = "assets/bp1.png";
+  static const diabimg = "assets/diab.png";
   static const loginText = "Login with Phone Number";
   static const otpText = "Verification";
   static const otpcodeText = "We sent you an SMS code on this number";
@@ -22,14 +23,17 @@ class StringData {
 
   //NET MONITOR BUTTONS
   static const bpmonitor = "Record Blood Pressure";
-  static const bpmonitordesc = "Record your blood pressure readings \nfor easy tracking";
+  static const bpmonitordesc =
+      "Record your blood pressure readings \nfor easy tracking";
   static const diabetesmonitor = "Record Sugar Level";
-  static const diabetesmonitordesc = "Record and keep track of your sugar \nlevel (Diabetes)";
+  static const diabetesmonitordesc =
+      "Record and keep track of your sugar \nlevel (Diabetes)";
   static const dossagereminder = "Medicine Reminder";
-  static const dossagereminddesc = "Set an alarm for the number of medications \nprescribed by your doctor";
+  static const dossagereminddesc =
+      "Set an alarm for the number of medications \nprescribed by your doctor";
   static const consultdoctor = "Consult Doctor";
-  static const consultdocdesc = "Call, Chat or Book an \nappointment with a doctor";
-
+  static const consultdocdesc =
+      "Call, Chat or Book an \nappointment with a doctor";
 
   static const Color appThemeColor1 = Color.fromRGBO(35, 117, 103, 1);
   static const Color appThemeColor2 = Color.fromRGBO(163, 153, 144, 1);
@@ -47,6 +51,7 @@ class StringData {
 
   // MONITOR CATEGORIES COLORS
   static const Color cont1Color = Color.fromRGBO(91, 74, 139, 1);
+  static const Color cont2Color = Color.fromRGBO(250, 231, 228, 1);
 
   // static const Color boxColor = Color.fromRGBO(r, g, b, opacity)
 }
