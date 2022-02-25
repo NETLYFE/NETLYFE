@@ -23,12 +23,12 @@ class _MonitorFragmentState extends State<MonitorFragment> {
         body: ListView(
           padding: const EdgeInsets.only(left: 15, top: 10, right: 15),
           children: [
-            MonitorContainer(
-                monitorName: StringData.bpmonitor,
-                desc: StringData.bpmonitordesc,
-                imageSrc: StringData.bpmoniimg,
-                btnColor: StringData.cont1Color,
-                onClick: () {}),
+            // MonitorContainer(
+            //     monitorName: StringData.bpmonitor,
+            //     desc: StringData.bpmonitordesc,
+            //     imageSrc: StringData.bpmoniimg,
+            //     btnColor: StringData.cont1Color,
+            //     onClick: () {}),
             // const SizedBox(height: 16),
             // MonitorContainer(
             //   monitorName: StringData.diabetesmonitor,
