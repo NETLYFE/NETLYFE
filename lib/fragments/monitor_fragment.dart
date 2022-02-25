@@ -25,15 +25,46 @@ class _MonitorFragmentState extends State<MonitorFragment> {
         body: ListView(
           padding: const EdgeInsets.only(left: 15, top: 10, right: 15),
           children: [
+            const SizedBox(height: 16),
             MonitorContainer(
-              btnColor: StringData.bpColor,
+              btnColor: StringData.cont1Color,
               btnTitle: StringData.bpmonitor,
               btnDescription: StringData.bpmonitordesc,
               imgSrc: StringData.bpmoniimg,
               onBtnTap: () {
                 nextScreenIos(context, const BPMonitorView());
               },
-            )
+            ),
+            const SizedBox(height: 16),
+            MonitorContainer(
+              btnColor: StringData.cont2Color,
+              btnTitle: StringData.diabetesmonitor,
+              btnDescription: StringData.diabetesmonitordesc,
+              imgSrc: StringData.bpmoniimg,
+              onBtnTap: () {
+                nextScreenIos(context, const BPMonitorView());
+              },
+            ),
+            const SizedBox(height: 16),
+            MonitorContainer(
+              btnColor: StringData.cont3Color,
+              btnTitle: StringData.dossagereminder,
+              btnDescription: StringData.dossagereminddesc,
+              imgSrc: StringData.bpmoniimg,
+              onBtnTap: () {
+                nextScreenIos(context, const BPMonitorView());
+              },
+            ),
+            const SizedBox(height: 16),
+            MonitorContainer(
+              btnColor: StringData.cont4Color,
+              btnTitle: StringData.consultdoctor,
+              btnDescription: StringData.consultdocdesc,
+              imgSrc: StringData.bpmoniimg,
+              onBtnTap: () {
+                nextScreenIos(context, const BPMonitorView());
+              },
+            ),
           ],
         ));
   }
