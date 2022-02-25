@@ -4,7 +4,6 @@ import 'package:netlyfe/Utils/screen_intents.dart';
 import 'package:netlyfe/views/otp_view.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
-
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
 
@@ -17,32 +16,28 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // key: scaffoldKey,
+        // key: scaffoldKey,
         backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
-          leading: IconButton(
-              onPressed: (){},
-              icon: const Icon(Icons.close)
-          ),
+          leading: IconButton(onPressed: () {}, icon: const Icon(Icons.close)),
         ),
         body: SingleChildScrollView(
-          padding: const EdgeInsets.only(left: 30,right: 30,top:20,bottom:50),
+          padding:
+              const EdgeInsets.only(left: 30, right: 30, top: 20, bottom: 50),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children:[
+            children: [
               Text(
                 "Welcome",
                 style: TextStyle(
                     fontSize: 22,
-                    fontWeight:FontWeight.w600,
+                    fontWeight: FontWeight.w600,
                     letterSpacing: -0.7,
                     wordSpacing: 1,
-                    color: Theme.of(context).colorScheme.primary
-                ),
+                    color: Theme.of(context).colorScheme.primary),
               ),
-              const SizedBox(height:40),
-
+              const SizedBox(height: 40),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -51,11 +46,9 @@ class _LoginViewState extends State<LoginView> {
                     style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
-                        wordSpacing:1,
-                        letterSpacing:-0.7
-                    ),
+                        wordSpacing: 1,
+                        letterSpacing: -0.7),
                   ),
-
                   const SizedBox(
                     height: 10,
                   ),
@@ -70,9 +63,9 @@ class _LoginViewState extends State<LoginView> {
                     height: 10,
                   ),
                   Container(
-                    height:50,
-                    margin: const EdgeInsets.only(top: 10,bottom: 30),
-                    alignment:Alignment.center,
+                    height: 50,
+                    margin: const EdgeInsets.only(top: 10, bottom: 30),
+                    alignment: Alignment.center,
                     decoration: BoxDecoration(
                       color: Colors.grey.shade300,
                       borderRadius: BorderRadius.circular(3),
@@ -82,20 +75,22 @@ class _LoginViewState extends State<LoginView> {
                       keyboardType: TextInputType.text,
                       decoration: const InputDecoration(
                         hintText: "+233 00 000 000",
-                        hintStyle: TextStyle(fontWeight: FontWeight.w500,fontSize:15,color:Colors.grey),
+                        hintStyle: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 15,
+                            color: Colors.grey),
                         border: InputBorder.none,
-                        prefixIcon:Icon(Icons.phone,size:20),
+                        prefixIcon: Icon(Icons.phone, size: 20),
                       ),
                     ),
                   ),
-                  const SizedBox(height:20),
-
+                  const SizedBox(height: 20),
                   RoundedLoadingButton(
                     controller: btnController,
-                    width:MediaQuery.of(context).size.width *1.0,
+                    width: MediaQuery.of(context).size.width * 1.0,
                     color: Theme.of(context).primaryColor,
                     child: Wrap(
-                      children: const[
+                      children: const [
                         Text(
                           "NEXT",
                           style: TextStyle(
@@ -106,7 +101,7 @@ class _LoginViewState extends State<LoginView> {
                         ),
                       ],
                     ),
-                    onPressed: (){
+                    onPressed: () {
                       nextScreen(context, const OTPView());
                       btnController.reset();
                     },
@@ -115,7 +110,6 @@ class _LoginViewState extends State<LoginView> {
               )
             ],
           ),
-        )
-    );
+        ));
   }
 }

@@ -7,7 +7,6 @@ import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
-
 class OTPView extends StatefulWidget {
   const OTPView({Key? key}) : super(key: key);
 
@@ -20,32 +19,28 @@ class _OTPiewState extends State<OTPView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // key: scaffoldKey,
+        // key: scaffoldKey,
         backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
-          leading: IconButton(
-              onPressed: (){},
-              icon: const Icon(Icons.close)
-          ),
+          leading: IconButton(onPressed: () {}, icon: const Icon(Icons.close)),
         ),
         body: SingleChildScrollView(
-          padding: const EdgeInsets.only(left: 30,right: 30,top:20,bottom:50),
+          padding:
+              const EdgeInsets.only(left: 30, right: 30, top: 20, bottom: 50),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children:[
+            children: [
               Text(
                 StringData.otpText,
                 style: TextStyle(
                     fontSize: 22,
-                    fontWeight:FontWeight.w600,
+                    fontWeight: FontWeight.w600,
                     letterSpacing: -0.7,
                     wordSpacing: 1,
-                    color: Theme.of(context).colorScheme.primary
-                ),
+                    color: Theme.of(context).colorScheme.primary),
               ),
-              const SizedBox(height:40),
-
+              const SizedBox(height: 40),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -54,9 +49,8 @@ class _OTPiewState extends State<OTPView> {
                     style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
-                        wordSpacing:1,
-                        letterSpacing:-0.7
-                    ),
+                        wordSpacing: 1,
+                        letterSpacing: -0.7),
                   ),
 
                   const SizedBox(
@@ -73,9 +67,9 @@ class _OTPiewState extends State<OTPView> {
                     height: 10,
                   ),
                   Container(
-                    height:50,
-                    margin: const EdgeInsets.only(top: 10,bottom: 30),
-                    alignment:Alignment.center,
+                    height: 50,
+                    margin: const EdgeInsets.only(top: 10, bottom: 30),
+                    alignment: Alignment.center,
                     decoration: BoxDecoration(
                       // color: Colors.grey.shade300,
                       borderRadius: BorderRadius.circular(3),
@@ -89,13 +83,13 @@ class _OTPiewState extends State<OTPView> {
                       fieldStyle: FieldStyle.box,
                     ),
                   ),
-                  const SizedBox(height:20),
+                  const SizedBox(height: 20),
                   RoundedLoadingButton(
                     controller: btnController,
-                    width:MediaQuery.of(context).size.width *1.0,
+                    width: MediaQuery.of(context).size.width * 1.0,
                     color: Theme.of(context).primaryColor,
                     child: Wrap(
-                      children: const[
+                      children: const [
                         Text(
                           "VERIFY",
                           style: TextStyle(
@@ -106,7 +100,7 @@ class _OTPiewState extends State<OTPView> {
                         ),
                       ],
                     ),
-                    onPressed: (){
+                    onPressed: () {
                       btnController.reset();
                       nextScreen(context, const HomeView());
                     },
@@ -147,7 +141,6 @@ class _OTPiewState extends State<OTPView> {
               )
             ],
           ),
-        )
-    );
+        ));
   }
 }
