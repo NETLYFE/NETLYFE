@@ -19,5 +19,6 @@ class MyApp extends StatelessWidget {
         builder: DevicePreview.appBuilder,
         theme: CustomTheme().lightTheme,
         home: const SplashView());
+
   }
 }
