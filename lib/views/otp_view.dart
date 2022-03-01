@@ -23,6 +23,7 @@ class _OTPiewState extends State<OTPView> {
         backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
           leading: IconButton(onPressed: () {}, icon: const Icon(Icons.close)),
+         iconTheme: const IconThemeData(color: Colors.black),
         ),
         body: SingleChildScrollView(
           padding:
