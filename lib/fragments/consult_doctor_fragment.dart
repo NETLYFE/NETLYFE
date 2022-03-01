@@ -1,7 +1,3 @@
-
-import 'dart:html';
-import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netlyfe/Utils/app_name.dart';
@@ -82,6 +78,7 @@ class _ConsultDoctorFragmentState extends State<ConsultDoctorFragment> {
             ),
             const SizedBox(height: 15),
             SingleChildScrollView(
+              scrollDirection: Axis.vertical,
               child: Column(
                   children: List.generate(docList.length, (index) {
                 return DoctorListContainer(
@@ -199,7 +196,6 @@ class AppointmentContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         appBar: PreferredSize(
