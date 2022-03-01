@@ -43,7 +43,7 @@ class _ConsultDoctorFragmentState extends State<ConsultDoctorFragment> {
                     fontWeight: FontWeight.bold)),
             const SizedBox(height: 10),
             const AppointmentContainer(),
-            const SizedBox(height: 25),
+            const SizedBox(height: 20),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -55,7 +55,7 @@ class _ConsultDoctorFragmentState extends State<ConsultDoctorFragment> {
                 const SizedBox(height: 7),
               ],
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 15),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
