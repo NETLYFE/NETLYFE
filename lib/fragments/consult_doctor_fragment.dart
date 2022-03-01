@@ -1,4 +1,3 @@
-// ignore_for_file: unrelated_type_equality_checks
 
 import 'dart:html';
 import 'dart:ui';
@@ -200,6 +199,43 @@ class AppointmentContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    return Scaffold(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        appBar: PreferredSize(
+            preferredSize: const Size.fromHeight(90),
+            child: AppBar(
+                automaticallyImplyLeading: false,
+                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                actions: [
+                  IconButton(
+                      padding: const EdgeInsets.symmetric(vertical: 15),
+                      onPressed: () {},
+                      icon: const Icon(CupertinoIcons.bell))
+                ],
+                bottom: PreferredSize(
+                  preferredSize: const Size.fromHeight(30),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      children: [
+                        Text("Welcome, Sophia!",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                color: StringData.smallTextColor,
+                                fontSize: 15)),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text("Talk to a Doctor",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w700, fontSize: 17))
+                      ],
+                    ),
+                  ),
+                ))),
+        body: Center(child: Text("Consult Doctor Section")));
     return Stack(
       alignment: AlignmentDirectional.topCenter,
       children: [
