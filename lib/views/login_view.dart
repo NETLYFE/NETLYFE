@@ -1,3 +1,4 @@
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netlyfe/Utils/screen_intents.dart';
@@ -70,19 +71,25 @@ class _LoginViewState extends State<LoginView> {
                       color: Colors.grey.shade300,
                       borderRadius: BorderRadius.circular(3),
                     ),
-                    child: TextFormField(
-                      // controller: userNameController,
-                      keyboardType: TextInputType.text,
-                      decoration: const InputDecoration(
-                        hintText: "+233 00 000 000",
-                        hintStyle: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 15,
-                            color: Colors.grey),
-                        border: InputBorder.none,
-                        prefixIcon: Icon(Icons.phone, size: 20),
-                      ),
-                    ),
+                    child: Row(
+                      children: [
+                        CountryCodePicker(
+                          initialSelection: 'GH',
+                          favorite: const ['+233','GH'],
+                          alignLeft: false,
+                        ),
+
+                        Expanded(child: TextFormField(
+                          // controller: userNameController,
+                          keyboardType: TextInputType.text,
+                          decoration: const InputDecoration(
+                            hintText: "+233 00 000 000",
+                            hintStyle: TextStyle(fontWeight: FontWeight.w500,fontSize:15,color:Colors.grey),
+                            border: InputBorder.none,
+                          ),
+                        ),)
+                      ],
+                    )
                   ),
                   const SizedBox(height: 20),
                   RoundedLoadingButton(

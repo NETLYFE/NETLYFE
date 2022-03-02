@@ -7,14 +7,17 @@ class StringData {
   static const otpimg = "assets/OTP.jpg";
   static const editimg = "assets/pres.png";
   static const bpmoniimg = "assets/bp1.png";
+
   static const diabimg = "assets/sgl.png";
   static const dreminder = "assets/drem.png";
   static const cdoc = "assets/cdoc.png";
+
   static const loginText = "Login with Phone Number";
   static const otpText = "Verification";
   static const otpcodeText = "We sent you an SMS code on this number";
   static const welcomeText = "Can i help you with something?";
   static const searchtext = "Search medicine";
+  static const consultsearchtext = "Search a doctor or health issue";
 
   //CATEGORIES IMAGE PATH
   static const bpimg = "assets/bp.png";
@@ -47,6 +50,7 @@ class StringData {
   static const Color uploadPresColor = Color.fromRGBO(171, 218, 172, 1);
   static const Color smallTextColor = Color.fromRGBO(180, 180, 180, 1);
   static const Color textcolor1 = Color.fromRGBO(189, 183, 207, 1);
+  static const Color faintPrimary = Color.fromRGBO(166, 216, 167, 1);
 
   //STORE CATEGORIES COLORS
   static const Color bpColor = Color.fromRGBO(0, 159, 137, 1);

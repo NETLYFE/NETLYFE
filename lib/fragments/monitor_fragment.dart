@@ -65,6 +65,7 @@ class _MonitorFragmentState extends State<MonitorFragment> {
                 // nextScreenIos(context, const BPMonitorView());
               },
             ),
+
           ],
         ));
   }
