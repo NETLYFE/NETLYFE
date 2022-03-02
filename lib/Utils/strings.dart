@@ -7,8 +7,11 @@ class StringData {
   static const otpimg = "assets/OTP.jpg";
   static const editimg = "assets/pres.png";
   static const bpmoniimg = "assets/bp1.png";
-  static const diabimg = "assets/diab.png";
-  static const docimg = "assets/doc.png";
+
+  static const diabimg = "assets/sgl.png";
+  static const dreminder = "assets/drem.png";
+  static const cdoc = "assets/cdoc.png";
+
   static const loginText = "Login with Phone Number";
   static const otpText = "Verification";
   static const otpcodeText = "We sent you an SMS code on this number";
@@ -22,6 +25,10 @@ class StringData {
   static const diabetimg = "assets/diabet.png";
   static const malaimg = "assets/mala.png";
   static const drug = "assets/drug.png";
+
+  //NETMONITOR IMAGE PATH
+  static const addbpimg = "assets/addbp.png";
+  static const bpavg = "assets/bpavg.png";
 
   //NET MONITOR BUTTONS
   static const bpmonitor = "Record Blood Pressure";
@@ -59,4 +66,20 @@ class StringData {
   static const Color cont4Color = Color.fromRGBO(65, 125, 158, 1);
 
   // static const Color boxColor = Color.fromRGBO(r, g, b, opacity)
+
+// BLOOD PRESSURE COLOR
+  static const Color lowColor = Color.fromRGBO(93, 214, 203, 1);
+  static const Color nomColor = Color.fromRGBO(152, 211, 135, 1);
+  static const Color preHypColor = Color.fromRGBO(255, 194, 116, 1);
+  static const Color stg1Color = Color.fromRGBO(247, 171, 173, 1);
+  static const Color stg2Color = Color.fromRGBO(236, 81, 96, 1);
+
+  static const Color bpreadingtext = Color.fromRGBO(60, 139, 87, 1);
+  static const Color boxColor = Color.fromRGBO(204, 229, 205, 1);
+  static const Color avgtext = Color.fromARGB(204, 108, 121, 109);
+
+// DIABETES COLOR
+  static const Color excellentColor = Color.fromRGBO(11, 169, 82, 1);
+  static const Color goodColor = Color.fromRGBO(246, 103, 43, 1);
+  static const Color poorColor = Color.fromRGBO(255, 41, 41, 1);
 }
