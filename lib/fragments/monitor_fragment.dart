@@ -40,9 +40,9 @@ class _MonitorFragmentState extends State<MonitorFragment> {
               btnColor: StringData.cont2Color,
               btnTitle: StringData.diabetesmonitor,
               btnDescription: StringData.diabetesmonitordesc,
-              imgSrc: "",
+              imgSrc: StringData.diabimg,
               onBtnTap: () {
-                nextScreenIos(context, const BPMonitorView());
+                // nextScreenIos(context, const BPMonitorView());
               },
             ),
             const SizedBox(height: 16),
@@ -50,9 +50,9 @@ class _MonitorFragmentState extends State<MonitorFragment> {
               btnColor: StringData.cont3Color,
               btnTitle: StringData.dossagereminder,
               btnDescription: StringData.dossagereminddesc,
-              imgSrc: "",
+              imgSrc: StringData.dreminder,
               onBtnTap: () {
-                nextScreenIos(context, const BPMonitorView());
+                // nextScreenIos(context, const BPMonitorView());
               },
             ),
             const SizedBox(height: 16),
@@ -60,9 +60,9 @@ class _MonitorFragmentState extends State<MonitorFragment> {
               btnColor: StringData.cont4Color,
               btnTitle: StringData.consultdoctor,
               btnDescription: StringData.consultdocdesc,
-              imgSrc: "",
+              imgSrc: StringData.cdoc,
               onBtnTap: () {
-                nextScreenIos(context, const BPMonitorView());
+                // nextScreenIos(context, const BPMonitorView());
               },
             ),
           ],
