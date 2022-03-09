@@ -1,7 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:netlyfe/Utils/app_name.dart';
+import 'package:netlyfe/Utils/list_objects.dart';
 import 'package:netlyfe/Utils/strings.dart';
+import 'package:netlyfe/services/net_theme.dart';
+import 'package:netlyfe/services/theme_services.dart';
 import 'package:netlyfe/widgets/c_container1.dart';
 import 'package:netlyfe/widgets/category_container.dart';
 import 'package:netlyfe/widgets/products_container.dart';
@@ -17,17 +21,27 @@ class _StoreFragmentState extends State<StoreFragment> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         appBar: AppBar(
-          backgroundColor: Theme.of(context).backgroundColor,
+          backgroundColor: context.theme.backgroundColor,
           automaticallyImplyLeading: false,
+          elevation: 0,
           title: const AppName(fontSize: 20, title: 'Net', span: 'Store'),
           actions: [
             IconButton(
                 onPressed: () {},
-                icon: const Icon(
+                icon: Icon(
                   Icons.shopping_cart_outlined,
                   size: 18,
+                  color: Get.isDarkMode ? Colors.white : Colors.black,
+                )),
+            IconButton(
+                onPressed: () {
+                  ThemeServices().toggleTheme();
+                },
+                icon: Icon(
+                  Get.isDarkMode ? Icons.wb_sunny_rounded : Icons.nightlight,
+                  size: 20,
+                  color: Get.isDarkMode ? Colors.white : Colors.black,
                 ))
           ],
         ),
@@ -50,60 +64,53 @@ class _StoreFragmentState extends State<StoreFragment> {
             const SizedBox(
               height: 16,
             ),
-            const Text(
+            Text(
               "Categories",
-              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
+              style: titleStyle.copyWith(
+                  fontSize: 18, fontWeight: FontWeight.w600),
             ),
             const SizedBox(
               height: 10,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const [
-                CategoryContainer(
-                  catColor: StringData.bpColor,
-                  catImg: StringData.bpimg,
-                  catTitle: "Blood Pressure",
-                ),
-                CategoryContainer(
-                  catColor: StringData.pneumoColor,
-                  catImg: StringData.pneumoimg,
-                  catTitle: "Pneumonia",
-                ),
-                CategoryContainer(
-                  catColor: StringData.diabetColor,
-                  catImg: StringData.diabetimg,
-                  catTitle: "Diabetes",
-                ),
-                CategoryContainer(
-                  catColor: StringData.malaColor,
-                  catImg: StringData.malaimg,
-                  catTitle: "Malaria",
-                )
-              ],
-            ),
+            Wrap(
+                alignment: WrapAlignment.spaceBetween,
+                children: List<Widget>.generate(diseaseList.length, (index) {
+                  return CategoryContainer(
+                    catColor: index == 0
+                        ? greenkishClr
+                        : index == 1
+                            ? bluishClr
+                            : index == 2
+                                ? yellowishClr
+                                : pinkishClr,
+                    catImg: diseaseList[index].img,
+                    catTitle: diseaseList[index].name,
+                    onTap: () {
+                      print(diseaseList[index].slug);
+                    },
+                  );
+                })),
             const SizedBox(
               height: 16,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
+              children: [
                 Text(
                   "Products",
-                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
+                  style: titleStyle.copyWith(
+                      fontSize: 18, fontWeight: FontWeight.w600),
                 ),
                 Text(
-                  "View All",
-                  style: TextStyle(
-                      color: StringData.sophiaColor,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 15),
-                )
+                  "view All",
+                  style: titleStyle.copyWith(
+                      color: yellowishClr,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600),
+                ),
               ],
             ),
-            const SizedBox(
-              height: 10,
-            ),
+            const SizedBox(height: 10),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -117,6 +124,5 @@ class _StoreFragmentState extends State<StoreFragment> {
             )
           ],
         ));
-// ignore: dead_code
   }
 }

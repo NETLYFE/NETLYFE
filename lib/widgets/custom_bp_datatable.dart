@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:netlyfe/Utils/list_objects.dart';
 
-class CustomDataTable extends StatefulWidget {
-  const CustomDataTable({Key? key}) : super(key: key);
+class CustomBPDataTable extends StatefulWidget {
+  const CustomBPDataTable({Key? key}) : super(key: key);
 
   @override
-  _CustomDataTableState createState() => _CustomDataTableState();
+  _CustomBPDataTableState createState() => _CustomBPDataTableState();
 }
 
-class _CustomDataTableState extends State<CustomDataTable> {
-  // late List<BPData> pdata;
-
+class _CustomBPDataTableState extends State<CustomBPDataTable> {
   @override
   Widget build(BuildContext context) {
     return DataTable(

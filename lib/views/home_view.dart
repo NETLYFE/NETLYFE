@@ -1,9 +1,11 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:netlyfe/Utils/bottom_nav_icon_list.dart';
 import 'package:netlyfe/fragments/article_fragment.dart';
-import 'package:netlyfe/fragments/consult_doctor_fragment.dart';
+import 'package:netlyfe/services/net_theme.dart';
+import 'package:netlyfe/views/consult_doctor_view.dart';
 import 'package:netlyfe/fragments/monitor_fragment.dart';
 import 'package:netlyfe/fragments/profile_fragment.dart';
 import 'package:netlyfe/fragments/store_fragment.dart';
@@ -18,7 +20,7 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   int selectedIndex = 0;
   PageController? _pageController;
-  
+
   @override
   void initState() {
     super.initState();
@@ -30,60 +32,58 @@ class _HomeViewState extends State<HomeView> {
     _pageController!.dispose();
     super.dispose();
   }
-  
-  void onItemTapped(index){
+
+  void onItemTapped(index) {
     setState(() {
       selectedIndex = index;
     });
     _pageController!.animateToPage(index,
-        duration: const Duration(microseconds: 100), 
-        curve: Curves.easeIn);
+        duration: const Duration(microseconds: 100), curve: Curves.easeIn);
   }
 
-  Future _onWillPop () async{
-    if(selectedIndex != 0){
-      setState (()=> selectedIndex = 0);
-      _pageController!.animateToPage(0, duration: const Duration(milliseconds: 200),curve: Curves.easeIn);
-    }else{
-      await SystemChannels.platform.invokeMethod<void>('SystemNavigator.pop', true);
+  Future _onWillPop() async {
+    if (selectedIndex != 0) {
+      setState(() => selectedIndex = 0);
+      _pageController!.animateToPage(0,
+          duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
+    } else {
+      await SystemChannels.platform
+          .invokeMethod<void>('SystemNavigator.pop', true);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: ()async => await _onWillPop(),
+      onWillPop: () async => await _onWillPop(),
       child: Scaffold(
-         bottomNavigationBar: bottomNavigationBar(context),
+        bottomNavigationBar: bottomNavigationBar(context),
         body: PageView(
           physics: const NeverScrollableScrollPhysics(),
           controller: _pageController,
-          children: const[
-             StoreFragment(),
-             MonitorFragment(),
-             ConsultDoctorFragment(),
-             ArticleFragment(),
-             ProfileFragment()
+          children: const [
+            StoreFragment(),
+            MonitorFragment(),
+            ArticleFragment(),
+            ProfileFragment()
           ],
         ),
       ),
     );
   }
 
-AnimatedBottomNavigationBar bottomNavigationBar(BuildContext context){
-  return AnimatedBottomNavigationBar(
-      icons: navIconList,
-      activeIndex: selectedIndex,
-      gapLocation: GapLocation.none,
-      iconSize: 20,
-      leftCornerRadius: 20,
-      rightCornerRadius: 20,
-      backgroundColor: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
-      activeColor: Theme.of(context).bottomNavigationBarTheme.selectedItemColor,
-      inactiveColor: Theme.of(context).bottomNavigationBarTheme.unselectedItemColor,
-      splashColor: Theme.of(context).primaryColor,
-      onTap: (index) => onItemTapped(index)
-  );
+  AnimatedBottomNavigationBar bottomNavigationBar(BuildContext context) {
+    return AnimatedBottomNavigationBar(
+        icons: navIconList,
+        activeIndex: selectedIndex,
+        gapLocation: GapLocation.none,
+        iconSize: 20,
+        leftCornerRadius: 20,
+        rightCornerRadius: 20,
+        backgroundColor: context.theme.backgroundColor,
+        activeColor: appColor,
+        inactiveColor: Colors.grey.shade400,
+        splashColor: appColor,
+        onTap: (index) => onItemTapped(index));
   }
-
 }

@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:netlyfe/Utils/screen_intents.dart';
 import 'package:netlyfe/Utils/strings.dart';
+import 'package:netlyfe/services/net_theme.dart';
 import 'package:netlyfe/views/login_view.dart';
 import 'package:netlyfe/views/onboard_screen_view.dart';
 
@@ -19,14 +21,15 @@ class _SplashViewState extends State<SplashView> {
     super.initState();
     navigate();
   }
+
   void navigate() {
-    Timer(const Duration(seconds: 4),
-        () => nextScreenReplace(context, const LoginView()));
+    Timer(const Duration(seconds: 2), () => Get.to(() => const LoginView()));
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: context.theme.backgroundColor,
       body: Column(
         children: [
           Expanded(
@@ -36,16 +39,10 @@ class _SplashViewState extends State<SplashView> {
                       width: 150, height: 150))),
           Expanded(
               child: Center(
-                  child: Column(children: const [
-            Text(
-              StringData.appSlogan,
-              style: TextStyle(
-                  color: Colors.black87,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w800),
-            ),
-            SizedBox(height: 10),
-            CircularProgressIndicator(
+                  child: Column(children: [
+            Text(StringData.appSlogan, style: descriptionStyle),
+            const SizedBox(height: 10),
+            const CircularProgressIndicator(
                 strokeWidth: 3.0, color: StringData.appThemeColor1)
           ])))
         ],

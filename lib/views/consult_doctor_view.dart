@@ -4,14 +4,15 @@ import 'package:netlyfe/Utils/app_name.dart';
 import 'package:netlyfe/Utils/bottom_nav_icon_list.dart';
 import 'package:netlyfe/Utils/strings.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:netlyfe/widgets/appointment_container.dart';
 
-class ConsultDoctorFragment extends StatefulWidget {
-  const ConsultDoctorFragment({Key? key}) : super(key: key);
+class ConsultDoctor extends StatefulWidget {
+  const ConsultDoctor({Key? key}) : super(key: key);
   @override
-  _ConsultDoctorFragmentState createState() => _ConsultDoctorFragmentState();
+  _ConsultDoctorState createState() => _ConsultDoctorState();
 }
 
-class _ConsultDoctorFragmentState extends State<ConsultDoctorFragment> {
+class _ConsultDoctorState extends State<ConsultDoctor> {
   int choiceselect = 0;
   bool isSelected = true;
   @override
@@ -19,15 +20,14 @@ class _ConsultDoctorFragmentState extends State<ConsultDoctorFragment> {
     return Scaffold(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         appBar: AppBar(
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          automaticallyImplyLeading: false,
-          title: const AppName(fontSize: 20, title: 'Net', span: 'Consult'),
+          backgroundColor: Theme.of(context).colorScheme.onPrimary,
+          title: const AppName(fontSize: 20, title: 'Consult ', span: 'Doctor'),
           actions: [
             IconButton(onPressed: () {}, icon: const Icon(CupertinoIcons.bell))
           ],
         ),
         body: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 25),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 25),
           children: [
             const SearchContainer(),
             const SizedBox(height: 25),
@@ -76,7 +76,7 @@ class _ConsultDoctorFragmentState extends State<ConsultDoctorFragment> {
                     );
                   })),
             ),
-            const SizedBox(height: 15),
+            const SizedBox(height: 5),
             SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Column(
@@ -112,14 +112,14 @@ class DoctorListContainer extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: Container(
-        width: MediaQuery.of(context).size.width * 0.9,
+        width: double.infinity,
         height: 130,
         decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.onPrimary,
             borderRadius: BorderRadius.circular(14),
             border: Border.all(color: Colors.grey.shade300)),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -128,7 +128,7 @@ class DoctorListContainer extends StatelessWidget {
                   height: 70,
                   decoration: BoxDecoration(
                       image: const DecorationImage(
-                          image: AssetImage(StringData.docimg)),
+                          image: AssetImage(StringData.cdoc)),
                       borderRadius: BorderRadius.circular(12),
                       color: Colors.transparent,
                       border: Border.all(color: StringData.smallTextColor))),
@@ -189,128 +189,6 @@ class DoctorListContainer extends StatelessWidget {
   }
 }
 
-class AppointmentContainer extends StatelessWidget {
-  const AppointmentContainer({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(90),
-            child: AppBar(
-                automaticallyImplyLeading: false,
-                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-                actions: [
-                  IconButton(
-                      padding: const EdgeInsets.symmetric(vertical: 15),
-                      onPressed: () {},
-                      icon: const Icon(CupertinoIcons.bell))
-                ],
-                bottom: PreferredSize(
-                  preferredSize: const Size.fromHeight(30),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    alignment: Alignment.centerLeft,
-                    child: Column(
-                      children: [
-                        Text("Welcome, Sophia!",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                color: StringData.smallTextColor,
-                                fontSize: 15)),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text("Talk to a Doctor",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w700, fontSize: 17))
-                      ],
-                    ),
-                  ),
-                ))),
-        body: Center(child: Text("Consult Doctor Section")));
-    return Stack(
-      alignment: AlignmentDirectional.topCenter,
-      children: [
-        Container(
-            width: MediaQuery.of(context).size.width * 0.85,
-            height: 148,
-            decoration: BoxDecoration(
-                color: Colors.green[100],
-                borderRadius: const BorderRadius.all(Radius.circular(12)))),
-        Container(
-          width: MediaQuery.of(context).size.width * 1,
-          height: 140,
-          decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(12)),
-              color: StringData.appThemeColor1),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ListTile(
-                  leading: Container(
-                    width: 40,
-                    height: 40,
-                    decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(12)),
-                        image: DecorationImage(
-                            image: AssetImage(StringData.docimg),
-                            fit: BoxFit.cover)),
-                  ),
-                  title: Text(
-                    "Dr Ntiamoah Opoku Ware",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Theme.of(context).colorScheme.onPrimary),
-                  ),
-                  subtitle: const Text("General Practitioner",
-                      style: TextStyle(color: StringData.smallTextColor)),
-                  trailing: Container(
-                    width: 25,
-                    height: 25,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Theme.of(context).colorScheme.onPrimary),
-                    child: const Center(
-                      child: Icon(Icons.arrow_forward_outlined,
-                          color: StringData.appThemeColor1, size: 16),
-                    ),
-                  ),
-                ),
-                const Divider(
-                  height: 1,
-                  indent: 25,
-                  endIndent: 25,
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 5),
-                  child: ListTile(
-                    minLeadingWidth: 5,
-                    leading: Icon(
-                      Icons.schedule_outlined,
-                      color: StringData.smallTextColor,
-                    ),
-                    title: Text("Friday, March 27 at 08:000 - 09:00",
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500)),
-                  ),
-                )
-              ],
-            ),
-          ),
-        )
-      ],
-    );
-  }
-}
-
 class SearchContainer extends StatelessWidget {
   const SearchContainer({
     Key? key,
@@ -320,7 +198,7 @@ class SearchContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         width: MediaQuery.of(context).size.width,
-        height: 45,
+        height: 50,
         decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.onPrimary,
             borderRadius: BorderRadius.circular(12),

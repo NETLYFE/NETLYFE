@@ -1,24 +1,27 @@
-import 'package:device_preview/device_preview.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:netlyfe/Utils/customtheme.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:netlyfe/database/db_helper.dart';
+import 'package:netlyfe/services/net_theme.dart';
+import 'package:netlyfe/services/theme_services.dart';
 import 'package:netlyfe/views/splash_view.dart';
 
-void main() => runApp(DevicePreview(
-    enabled: !kReleaseMode, builder: ((context) => const MyApp())));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await DBHelper.initDB();
+  await GetStorage.init();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        useInheritedMediaQuery: true,
-        locale: DevicePreview.locale(context),
-        builder: DevicePreview.appBuilder,
-        theme: CustomTheme().lightTheme,
+        theme: NetThemes.lightMode,
+        darkTheme: NetThemes.darkMode,
+        themeMode: ThemeServices().theme,
         home: const SplashView());
-
   }
 }

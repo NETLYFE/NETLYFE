@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:netlyfe/Utils/strings.dart';
 
 class ProductsContainer extends StatelessWidget {
@@ -16,12 +17,13 @@ class ProductsContainer extends StatelessWidget {
             width: 160,
             height: 150,
             decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.onPrimary,
-              borderRadius: const BorderRadius.all(Radius.circular(8)),
-              border: Border.all(color: Theme.of(context).shadowColor,width: 2.0)
-            ),
+                borderRadius: const BorderRadius.all(Radius.circular(8)),
+                border: Border.all(
+                    width: 0.5,
+                    color:
+                        Get.isDarkMode ? Colors.grey : Colors.grey.shade400)),
             child: Padding(
-              padding: const EdgeInsets.only(left: 5,right: 2),
+              padding: const EdgeInsets.only(left: 5, right: 2),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -33,47 +35,46 @@ class ProductsContainer extends StatelessWidget {
                         width: 80,
                         height: 80,
                         decoration: const BoxDecoration(
-                          image: DecorationImage(image: AssetImage(StringData.drug),fit: BoxFit.cover),
-                          color: Colors.transparent,
-                          borderRadius: BorderRadius.all(Radius.circular(12))
-                        ),
+                            image: DecorationImage(
+                                image: AssetImage(StringData.drug),
+                                fit: BoxFit.cover),
+                            color: Colors.transparent,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12))),
                       ),
                       Column(
-                        children: const[
+                        children: const [
                           Text(r"MRP $120",
                               style: TextStyle(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w700,
-                                   color: StringData.smallTextColor
-                              )
+                                  color: StringData.smallTextColor)),
+                          SizedBox(
+                            height: 2,
                           ),
-                          SizedBox(height: 2,),
-                          Text(r"$220.50",style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700
+                          Text(
+                            r"$220.50",
+                            style: TextStyle(
+                                fontSize: 12, fontWeight: FontWeight.w700),
                           )
-                        ,)
                         ],
                       )
                     ],
                   ),
                   Column(
-                    crossAxisAlignment:CrossAxisAlignment.start,
-                    children: const[
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
                       Text(
-                          "Ibuprofen",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 14
-                          ),
+                        "Ibuprofen",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w700, fontSize: 14),
                       ),
                       Text(
-                          "Box of 10 capsules",
-                          style: TextStyle(
+                        "Box of 10 capsules",
+                        style: TextStyle(
                             fontSize: 12,
                             color: StringData.smallTextColor,
-                            fontWeight: FontWeight.w700
-                          ),
+                            fontWeight: FontWeight.w700),
                       )
                     ],
                   )
@@ -82,37 +83,32 @@ class ProductsContainer extends StatelessWidget {
             ),
           ),
           Positioned(
-            right: 0,
+              right: 0,
               child: Container(
                 height: 25,
                 width: 60,
                 decoration: const BoxDecoration(
-                  color: Colors.orangeAccent,
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(8)
-                  )
-                ),
+                    color: Colors.orangeAccent,
+                    borderRadius:
+                        BorderRadius.only(topRight: Radius.circular(8))),
                 child: Center(
                   child: RichText(
                       text: TextSpan(
-                      text: '20% ',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 12,
-                          color: Theme.of(context).colorScheme.onPrimary),
-                      children: [
+                          text: '20% ',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 12,
+                              color: Theme.of(context).colorScheme.onPrimary),
+                          children: [
                         TextSpan(
                             text: '0ff',
                             style: TextStyle(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 12,
-                                color: Theme.of(context).colorScheme.onPrimary)
-                        )
-                      ]
-                  )),
+                                color: Theme.of(context).colorScheme.onPrimary))
+                      ])),
                 ),
-              )
-          )
+              ))
         ],
       ),
     );

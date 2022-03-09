@@ -29,6 +29,7 @@ class StringData {
   //NETMONITOR IMAGE PATH
   static const addbpimg = "assets/addbp.png";
   static const bpavg = "assets/bpavg.png";
+  static const dbavg = "assets/diabavg.png";
 
   //NET MONITOR BUTTONS
   static const bpmonitor = "Record Blood Pressure";

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:get/get.dart';
 import 'package:netlyfe/Utils/app_name.dart';
 import 'package:netlyfe/Utils/screen_intents.dart';
 import 'package:netlyfe/Utils/strings.dart';
 import 'package:netlyfe/views/bp_monitor_view.dart';
+import 'package:netlyfe/views/consult_doctor_view.dart';
+import 'package:netlyfe/views/medicine_reminder.dart';
+import 'package:netlyfe/views/sugar_level_view.dart';
 
 class MonitorFragment extends StatefulWidget {
   const MonitorFragment({Key? key}) : super(key: key);
@@ -16,9 +20,10 @@ class _MonitorFragmentState extends State<MonitorFragment> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        backgroundColor: context.theme.backgroundColor,
         appBar: AppBar(
-          backgroundColor: Theme.of(context).backgroundColor,
+          backgroundColor: context.theme.backgroundColor,
+          elevation: 0,
           automaticallyImplyLeading: false,
           title: const AppName(fontSize: 20, title: 'Net', span: 'Monitor'),
         ),
@@ -32,7 +37,7 @@ class _MonitorFragmentState extends State<MonitorFragment> {
               btnDescription: StringData.bpmonitordesc,
               imgSrc: StringData.bpmoniimg,
               onBtnTap: () {
-                nextScreenIos(context, const BPMonitorView());
+                Get.to(() => const BPMonitorView());
               },
             ),
             const SizedBox(height: 16),
@@ -42,7 +47,7 @@ class _MonitorFragmentState extends State<MonitorFragment> {
               btnDescription: StringData.diabetesmonitordesc,
               imgSrc: StringData.diabimg,
               onBtnTap: () {
-                // nextScreenIos(context, const BPMonitorView());
+                Get.to(() => const RecordSugarLevel());
               },
             ),
             const SizedBox(height: 16),
@@ -52,7 +57,7 @@ class _MonitorFragmentState extends State<MonitorFragment> {
               btnDescription: StringData.dossagereminddesc,
               imgSrc: StringData.dreminder,
               onBtnTap: () {
-                // nextScreenIos(context, const BPMonitorView());
+                Get.to(() => const MedicineReminder());
               },
             ),
             const SizedBox(height: 16),
@@ -62,10 +67,9 @@ class _MonitorFragmentState extends State<MonitorFragment> {
               btnDescription: StringData.consultdocdesc,
               imgSrc: StringData.cdoc,
               onBtnTap: () {
-                // nextScreenIos(context, const BPMonitorView());
+                Get.to(() => const ConsultDoctor());
               },
             ),
-
           ],
         ));
   }
@@ -75,6 +79,7 @@ class MonitorContainer extends StatelessWidget {
   final Color btnColor;
   final String btnTitle;
   final String btnDescription;
+
   final String imgSrc;
   final Function onBtnTap;
   const MonitorContainer(
