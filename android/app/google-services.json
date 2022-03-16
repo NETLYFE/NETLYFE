@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "688896866947",
+    "project_id": "netlyfe-15ac5",
+    "storage_bucket": "netlyfe-15ac5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688896866947:android:e51ab2c46f892bff5e39b6",
+        "android_client_info": {
+          "package_name": "com.netmobile.netlyfe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "688896866947-77r1ebfv4tmg7dhr5flppqv056m7g9rs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.netmobile.netlyfe",
+            "certificate_hash": "0fca88632907a33a91451e8b46708cc7f3925a69"
+          }
+        },
+        {
+          "client_id": "688896866947-vim6hng5mh378vcbqasja8e8glrsvlnc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfja5AHaDm8TfHC8WFEeAouPcZI_JumxA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "688896866947-vim6hng5mh378vcbqasja8e8glrsvlnc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

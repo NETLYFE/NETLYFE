@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:netlyfe/Utils/app_name.dart';
 import 'package:netlyfe/Utils/list_objects.dart';
 import 'package:netlyfe/Utils/strings.dart';
@@ -6,7 +7,7 @@ import 'package:netlyfe/widgets/average_container.dart';
 import 'package:netlyfe/widgets/custom_bp_datatable.dart';
 import 'package:netlyfe/widgets/custom_floating_action_btn.dart';
 import 'package:netlyfe/widgets/custom_bp_sheet.dart';
-import 'package:netlyfe/widgets/form_field_container.dart';
+import 'package:netlyfe/widgets/login_form_field_container.dart';
 import 'package:netlyfe/widgets/stages_container.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
@@ -16,10 +17,10 @@ class BPMonitorView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Theme.of(context).colorScheme.primary),
-        backgroundColor: Theme.of(context).colorScheme.onPrimary,
+        iconTheme: const IconThemeData(color: Colors.black),
+        backgroundColor: context.theme.backgroundColor,
+        elevation: 0,
         title: const AppName(
             fontSize: 20, title: 'Record ', span: 'Blood Pressure'),
       ),

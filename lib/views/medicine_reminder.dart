@@ -72,8 +72,11 @@ class _MedicineReminderState extends State<MedicineReminder> {
         await Get.to(() => const AddDosePage());
         doseController.getAllDose();
       },
-      label: const Text("ADD"),
-      icon: const Icon(Icons.add),
+      label: const Text(
+        "ADD",
+        style: TextStyle(color: Colors.white),
+      ),
+      icon: const Icon(Icons.add, color: Colors.white),
       backgroundColor: appColor,
     );
   }
@@ -112,35 +115,102 @@ class _MedicineReminderState extends State<MedicineReminder> {
         return ListView.builder(
             itemCount: doseController.doseList.length,
             itemBuilder: ((_, index) {
-              log.d(doseController.doseList.length);
               DoseReminder dorem = doseController.doseList[index];
               log.d(dorem.toJson());
-              return Container(
-                margin:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                height: 100,
-                width: 300,
-                color: Colors.green,
-              );
+              print(dorem.toJson());
+              return AnimationConfiguration.staggeredList(
+                  position: index,
+                  child: SlideAnimation(
+                      child: FadeInAnimation(
+                          child: GestureDetector(
+                              onTap: () {
+                                _showBottomSheet(context, dorem);
+                              },
+                              child: MoniTile(dorem)))));
             }));
       }),
     );
   }
+  _showBottomSheet(BuildContext ctx, DoseReminder dose) {
+    Get.bottomSheet(Container(
+      padding: const EdgeInsets.only(top: 4),
+      height: dose.startTime == null
+          ? MediaQuery.of(ctx).size.height * 0.32
+          : MediaQuery.of(ctx).size.height * 0.25,
+      color: Get.isDarkMode ? darkGreyClr : Colors.white,
+      child: Column(
+        children: [
+          Container(
+            height: 6,
+            width: 50,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Get.isDarkMode ? Colors.grey[600] : Colors.grey[300]),
+          ),
+          const Spacer(),
+          dose.startTime != null
+              ? Container()
+              : bottomSheetBody(
+                  label: "Set Reminder",
+                  onTap: () {
+                    Get.back();
+                  },
+                  clr: appColor,
+                  context: ctx),
+          const SizedBox(
+            height: 10,
+          ),
+          bottomSheetBody(
+              label: "Delete Dose",
+              onTap: () {
+                doseController.delete(dose);
+                Get.back();
+              },
+              clr: Colors.red[300]!,
+              context: ctx),
+          const SizedBox(height: 5),
+          bottomSheetBody(
+              label: "Close",
+              onTap: () {
+                Get.back();
+              },
+              clr: Colors.red[300]!,
+              context: context,
+              isClosed: true),
+          const SizedBox(height: 10),
+        ],
+      ),
+    ));
+  }
 
-  // Widget _addDossageBar() {
-  //   return Container(
-  //     margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-  //     child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-  //       Text(
-  //         "Today",
-  //         style: headingStyle,
-  //       ),
-  //       Text(
-  //         DateFormat.yMMMMd().format(DateTime.now()),
-  //         style: subHeadingStyle,
-  //       ),
-  //     ]),
-  //   );
-  // }
-
+  bottomSheetBody(
+      {required String label,
+      required Function()? onTap,
+      required Color clr,
+      bool isClosed = false,
+      required BuildContext context}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 4),
+        height: 50,
+        width: MediaQuery.of(context).size.width * 0.9,
+        decoration: BoxDecoration(
+            color: isClosed == true ? Colors.transparent : clr,
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(
+                width: 2,
+                color: isClosed == true
+                    ? Get.isDarkMode
+                        ? Colors.grey[600]!
+                        : Colors.grey[300]!
+                    : clr)),
+        child: Center(
+            child: Text(label,
+                style: isClosed
+                    ? titleStyle
+                    : titleStyle.copyWith(color: Colors.white))),
+      ),
+    );
+  }
 }

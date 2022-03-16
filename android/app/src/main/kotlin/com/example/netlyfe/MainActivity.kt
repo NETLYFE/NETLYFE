@@ -1,4 +1,4 @@
-package com.example.netlyfe
+package com.netmobile.netlyfe
 
 import io.flutter.embedding.android.FlutterActivity
 

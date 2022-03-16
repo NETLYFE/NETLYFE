@@ -6,6 +6,7 @@ import 'package:netlyfe/Utils/list_objects.dart';
 import 'package:netlyfe/Utils/strings.dart';
 import 'package:netlyfe/services/net_theme.dart';
 import 'package:netlyfe/services/theme_services.dart';
+import 'package:netlyfe/views/drug_category.dart';
 import 'package:netlyfe/widgets/c_container1.dart';
 import 'package:netlyfe/widgets/category_container.dart';
 import 'package:netlyfe/widgets/products_container.dart';
@@ -17,7 +18,7 @@ class StoreFragment extends StatefulWidget {
   _StoreFragmentState createState() => _StoreFragmentState();
 }
 
-class _StoreFragmentState extends State<StoreFragment> {
+class _StoreFragmentState extends State<StoreFragment> with AutomaticKeepAliveClientMixin{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,15 +35,6 @@ class _StoreFragmentState extends State<StoreFragment> {
                   size: 18,
                   color: Get.isDarkMode ? Colors.white : Colors.black,
                 )),
-            IconButton(
-                onPressed: () {
-                  ThemeServices().toggleTheme();
-                },
-                icon: Icon(
-                  Get.isDarkMode ? Icons.wb_sunny_rounded : Icons.nightlight,
-                  size: 20,
-                  color: Get.isDarkMode ? Colors.white : Colors.black,
-                ))
           ],
         ),
         body: ListView(
@@ -86,6 +78,7 @@ class _StoreFragmentState extends State<StoreFragment> {
                     catImg: diseaseList[index].img,
                     catTitle: diseaseList[index].name,
                     onTap: () {
+                      Get.to(() => DrugCategory(category: diseaseList[index].name));
                       print(diseaseList[index].slug);
                     },
                   );
@@ -125,4 +118,7 @@ class _StoreFragmentState extends State<StoreFragment> {
           ],
         ));
   }
+  @override
+  bool get wantKeepAlive => true;
+
 }

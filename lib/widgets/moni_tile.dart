@@ -73,10 +73,10 @@ class MoniTile extends StatelessWidget {
           RotatedBox(
             quarterTurns: 3,
             child: Text(
-              dose!.repeat!,
+              dose!.startTime == null ? "Set reminder" : dose!.repeat!,
               style: GoogleFonts.lato(
                 textStyle: const TextStyle(
-                    fontSize: 10,
+                    fontSize: 12,
                     fontWeight: FontWeight.bold,
                     color: Colors.white),
               ),
@@ -90,7 +90,7 @@ class MoniTile extends StatelessWidget {
   _getBGClr(int no) {
     switch (no) {
       case 0:
-        return bluishClr;
+        return appColor;
       case 1:
         return pinkishClr;
       case 2:
@@ -100,15 +100,3 @@ class MoniTile extends StatelessWidget {
     }
   }
 }
-
-
-
-
-
-// return AnimationConfiguration.staggeredList(
-              //     position: index,
-              //     child: SlideAnimation(
-              //       child: FadeInAnimation(
-              //           child: GestureDetector(
-              //               onTap: () {}, child: MoniTile(dorem))),
-              //     ));

@@ -26,7 +26,6 @@ List<Stages> diabetStageList = [
 
 final bpColumnList = ['Date', 'Time', 'Syst', 'Dias', 'Pulse'];
 final diabetesColumnList = ['Date', 'Time', 'Test Type', 'mg/dl'];
-
 class BPData {
   final String date;
   final String time;
@@ -61,13 +60,7 @@ List<DiabetesData> diabetesdataList = [
   DiabetesData("16/08/2019", "10:17", "RBS", "5.5"),
 ];
 
-List<DropdownMenuItem<String>> get dropdownItems {
-  List<DropdownMenuItem<String>> menuItems = [
-    DropdownMenuItem(child: Text("FBS"), value: "FBS"),
-    DropdownMenuItem(child: Text("RBS"), value: "RBS"),
-  ];
-  return menuItems;
-}
+
 
 class Disease {
   final String name;
@@ -85,3 +78,5 @@ List<Disease> diseaseList = [
 
 List<String> doseRepeatList = ['None', 'Daily', 'Weekly', 'Monthly'];
 List<String> doseProgramList = ["before-meal", "after-meal"];
+List<String> sugarTextTypeList = ['FBS','RBS'];
+

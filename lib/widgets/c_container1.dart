@@ -13,7 +13,9 @@ class CustomContainer1 extends StatelessWidget {
       height: 130,
       width: double.infinity,
       decoration: BoxDecoration(
-          color: Get.isDarkMode ? darkHeaderClr : Colors.grey[300],
+          color: Theme.of(context).brightness == Brightness.dark
+              ? darkHeaderClr
+              : Colors.grey[300],
           borderRadius: BorderRadius.circular(8)),
       child: Padding(
         padding: const EdgeInsets.only(left: 15, top: 20),

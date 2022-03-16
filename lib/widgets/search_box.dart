@@ -12,7 +12,7 @@ class SearchBox extends StatelessWidget {
         width: 300,
         height: 40,
         decoration: BoxDecoration(
-            color: Get.isDarkMode ? darkGreyClr : Colors.white,
+            color: Theme.of(context).brightness == Brightness.dark ? darkGreyClr : Colors.white,
             borderRadius: BorderRadius.circular(12)),
         child: Row(
           // mainAxisAlignment: MainAxisAlignment.spaceAround,

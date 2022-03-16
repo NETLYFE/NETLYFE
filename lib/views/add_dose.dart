@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_utils/get_utils.dart';
 import 'package:logger/logger.dart';
 import 'package:netlyfe/Utils/list_objects.dart';
 import 'package:netlyfe/controllers/dose_controller.dart';
@@ -23,6 +21,8 @@ class _AddDosePageState extends State<AddDosePage> {
   final noteCtr = TextEditingController();
   final numofDoseCtr = TextEditingController();
   final timesDailyCtr = TextEditingController();
+  // String startTime = DateFormat("hh:mm a").format(DateTime.now()).toString();
+  String? startTime;
   var log = Logger();
   String seldoseProgram = "before-meal";
   String selRepeat = "Daily";
@@ -219,6 +219,7 @@ class _AddDosePageState extends State<AddDosePage> {
             numofDose: int.parse(numofDoseCtr.text),
             timesDaily: int.parse(timesDailyCtr.text),
             program: seldoseProgram,
+            startTime: startTime,
             repeat: selRepeat,
             color: selColor));
     log.d(valueId);

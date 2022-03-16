@@ -5,7 +5,7 @@ final List<IconData> navIconList = [
   Icons.medical_services_outlined,
   Icons.graphic_eq_outlined,
   Icons.article_outlined,
-  Icons.account_circle_outlined,
+  Icons.menu,
 ];
 
 final List<String> categoryList = [

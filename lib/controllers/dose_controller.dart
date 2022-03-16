@@ -7,16 +7,19 @@ class DoseController extends GetxController {
   void onReady() {
     super.onReady();
   }
-
   var doseList = <DoseReminder>[].obs;
 
   Future<int> addDose({DoseReminder? dose}) async {
     return await DBHelper.insert(dose);
   }
-
   void getAllDose() async {
     List<Map<String, dynamic>> doses = await DBHelper.queryDose();
     doseList
         .assignAll(doses.map((data) => DoseReminder.fromJson(data)).toList());
   }
+  void delete(DoseReminder dose) {
+    DBHelper.delete(dose);
+    getAllDose();
+  }
 }
+

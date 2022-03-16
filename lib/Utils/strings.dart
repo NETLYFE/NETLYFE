@@ -44,6 +44,8 @@ class StringData {
   static const consultdoctor = "Consult Doctor";
   static const consultdocdesc =
       "Call, Chat or Book an appointment with \na doctor";
+  static const logoutmsg = "Do you really want to logout from the app? All your data will be saved. Continue?";
+  static const logouttitle = "Logout from the app?";
 
   static const Color appThemeColor1 = Color.fromRGBO(35, 117, 103, 1);
   static const Color appThemeColor2 = Color.fromRGBO(163, 153, 144, 1);

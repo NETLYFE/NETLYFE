@@ -78,8 +78,6 @@ class _HomeViewState extends State<HomeView> {
         activeIndex: selectedIndex,
         gapLocation: GapLocation.none,
         iconSize: 20,
-        leftCornerRadius: 20,
-        rightCornerRadius: 20,
         backgroundColor: context.theme.backgroundColor,
         activeColor: appColor,
         inactiveColor: Colors.grey.shade400,

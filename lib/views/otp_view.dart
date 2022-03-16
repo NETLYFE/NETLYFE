@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:netlyfe/Utils/screen_intents.dart';
 import 'package:netlyfe/Utils/strings.dart';
+import 'package:netlyfe/controllers/phone_auth_controller.dart';
 import 'package:netlyfe/services/net_theme.dart';
 import 'package:netlyfe/views/home_view.dart';
 import 'package:netlyfe/widgets/loading_button.dart';
-import 'package:otp_text_field/otp_field.dart';
-import 'package:otp_text_field/style.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 class OTPView extends StatefulWidget {
@@ -20,6 +20,9 @@ class OTPView extends StatefulWidget {
 
 class _OTPiewState extends State<OTPView> {
   final btnController = RoundedLoadingButtonController();
+  PhoneAuthController authController = Get.find();
+  String otpCode = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,21 +55,29 @@ class _OTPiewState extends State<OTPView> {
                   const SizedBox(
                     height: 15,
                   ),
-                  OTPTextField(
-                    length: 5,
-                    margin: const EdgeInsets.only(left: 0),
-                    width: MediaQuery.of(context).size.width,
-                    fieldWidth: 50,
-                    style: const TextStyle(fontSize: 17),
-                    textFieldAlignment: MainAxisAlignment.spaceAround,
-                    fieldStyle: FieldStyle.box,
+                  OtpTextField(
+                    numberOfFields: 6,
+                    borderColor:
+                        Get.isDarkMode ? Colors.grey[300]! : Colors.grey,
+                    focusedBorderColor: appColor,
+                    showFieldAsBox: true,
+                    onSubmit: (code) {
+                      setState(() {
+                        otpCode = code;
+                      });
+                    },
                   ),
                   const SizedBox(height: 20),
                   LoadingButton(
                       controller: btnController,
-                      onTap: () {
-                        Get.to(() => const HomeView());
-                        btnController.reset();
+                      onTap: () async {
+                        if(otpCode.isEmpty){
+                          btnController.reset();
+                          return Get.snackbar("Verification Error", "please enter verification code sent to your phone number");
+                        }
+                        await authController.verifyOTP(otpCode);
+                        // Get.to(() => const HomeView());
+                        // btnController.reset();
                       },
                       label: "VERIFY")
                 ],

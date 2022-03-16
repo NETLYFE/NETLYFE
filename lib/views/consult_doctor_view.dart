@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:netlyfe/Utils/app_name.dart';
 import 'package:netlyfe/Utils/bottom_nav_icon_list.dart';
 import 'package:netlyfe/Utils/strings.dart';
@@ -18,9 +19,10 @@ class _ConsultDoctorState extends State<ConsultDoctor> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.onPrimary,
+          iconTheme: const IconThemeData(color: Colors.black),
+          elevation: 0,
+          backgroundColor: context.theme.backgroundColor,
           title: const AppName(fontSize: 20, title: 'Consult ', span: 'Doctor'),
           actions: [
             IconButton(onPressed: () {}, icon: const Icon(CupertinoIcons.bell))

@@ -12,7 +12,7 @@ class UploadPresContainer extends StatelessWidget {
       width: double.infinity,
       height: 80,
       decoration: BoxDecoration(
-          color: Get.isDarkMode
+          color: Theme.of(context).brightness == Brightness.dark
               ? StringData.cont3Color
               : StringData.uploadPresColor,
           borderRadius: const BorderRadius.all(Radius.circular(8))),

@@ -16,11 +16,11 @@ class MonitorFragment extends StatefulWidget {
   _MonitorFragmentState createState() => _MonitorFragmentState();
 }
 
-class _MonitorFragmentState extends State<MonitorFragment> {
+class _MonitorFragmentState extends State<MonitorFragment> with
+    AutomaticKeepAliveClientMixin{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: context.theme.backgroundColor,
         appBar: AppBar(
           backgroundColor: context.theme.backgroundColor,
           elevation: 0,
@@ -73,6 +73,9 @@ class _MonitorFragmentState extends State<MonitorFragment> {
           ],
         ));
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 class MonitorContainer extends StatelessWidget {
