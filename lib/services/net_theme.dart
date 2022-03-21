@@ -12,6 +12,10 @@ const Color pinkishClr = Color(0xFFff4667);
 const Color darkGreyClr = Color(0xFF121212);
 const Color darkHeaderClr = Color(0xFF424242);
 
+//DRUG CATEGORY CART
+const Color catboxColor = Color.fromRGBO(243, 243, 243, 1);
+const Color cartBtn = Color.fromRGBO(115,170, 134, 1);
+
 class NetThemes {
   static final lightMode = ThemeData(
       primaryColor: appColor,

@@ -30,6 +30,7 @@ class _SplashViewState extends State<SplashView> {
       navigate(const HomeView());
     }
   }
+
   void navigate(Widget route) {
     Timer(const Duration(seconds: 3), () => Get.to(() => route));
   }
