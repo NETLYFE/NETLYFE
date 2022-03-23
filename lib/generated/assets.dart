@@ -12,10 +12,12 @@ class Assets {
   static const String assetsDoc = 'assets/doc.png';
   static const String assetsDrem = 'assets/drem.png';
   static const String assetsDrug = 'assets/drug.png';
+  static const String assetsDtest = 'assets/dtest.jpg';
   static const String assetsEdit = 'assets/edit.png';
   static const String assetsMala = 'assets/mala.png';
   static const String assetsNl = 'assets/nl.png';
   static const String assetsNl2 = 'assets/nl2.png';
+  static const String assetsNotfound = 'assets/notfound.gif';
   static const String assetsOTP = 'assets/OTP.jpg';
   static const String assetsPa = 'assets/pa.jpg';
   static const String assetsPneumo = 'assets/pneumo.png';

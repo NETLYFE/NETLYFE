@@ -1,3 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:firestore_ui/animated_firestore_grid.dart';
@@ -5,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:logger/logger.dart';
+import 'package:netlyfe/models/drugs_model.dart';
 import 'package:netlyfe/services/net_theme.dart';
 
 class DrugCategory extends StatefulWidget {
@@ -17,6 +21,25 @@ class DrugCategory extends StatefulWidget {
 class _DrugCategoryState extends State<DrugCategory>
     with AutomaticKeepAliveClientMixin {
   final log = Logger();
+  final currentuser = FirebaseAuth.instance.currentUser;
+  List<Drugs> drugList = [];
+
+
+  Future<Map> getDrugsCategory(String selcat) async{
+    DatabaseReference dbRef = FirebaseDatabase.instance.ref().child('Drugs');
+    final DataSnapshot snapshot = await dbRef.child(selcat).get();
+    log.d(snapshot.value);
+    return snapshot.value as Map;
+  }
+
+  Stream<List<Drugs>> getDrugsCate(String selectedCategory) {
+   final querySnapshot =  FirebaseFirestore.instance.collection('Drugs').where("category",isEqualTo: selectedCategory)
+       .snapshots();
+        return querySnapshot.map((snapshot) => snapshot.docs.map((doc) =>
+        Drugs.fromJson(doc.data())).toList());
+  }
+
+
   @override
   Widget build(BuildContext context) {
     String cat = widget.category;
@@ -34,39 +57,47 @@ class _DrugCategoryState extends State<DrugCategory>
       OrientationBuilder(
         builder: (context, orientation) {
           final orientSize = MediaQuery.of(context).size;
-          return FirebaseAnimatedList(
-              query: FirebaseDatabase.instance.ref()
-              .child("Drugs").child(cat),
-              itemBuilder: (
-                  BuildContext context, DataSnapshot snapshot,
-                  Animation<double> animation, int index) {
-                  return FadeTransition(
-                      opacity: animation,
-                      child: const CategoryListItem(),
-                  ) ;
-              },
+          return StreamBuilder<List<Drugs>>(
+              stream: getDrugsCate(cat),
+              builder: (context,snapshot){
+                if(snapshot.hasError){
+                  return const Center(child: CircularProgressIndicator(color: appColor));
+                }
+                if(snapshot.connectionState == ConnectionState.waiting){
+                  return const Center(child: CircularProgressIndicator(color: appColor));
+                }
+                if(snapshot.data == null){
+                  return const Center(child: CircularProgressIndicator(color: appColor));
+                }
+                if(snapshot.data!.isEmpty){
+                  return  Center(child: Image.asset("assets/notfound.gif",height: 180,width: 180,));
+                }
+                  return GridView.builder(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        childAspectRatio: orientation == Orientation.portrait ?
+                        ((orientSize.width / 2) / 205) : ((orientSize.width / 2) / 290),
+                        crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
+                        mainAxisSpacing: 15,
+                        crossAxisSpacing: 10
+                      ),
+                      itemCount: snapshot.data == null ? 0 : snapshot.data!.length,
+                      itemBuilder: (context,index){
+                        final drugs = snapshot.data!.toList()[index];
+                        log.d(drugs.category);
+                        return CategoryListItem(
+                          imgurl: drugs.imgUrl!,
+                          drugName: drugs.name!,
+                          drugPrice: drugs.price!,
+                          drgManufact: drugs.manufacturedBy!,
+                          drugKey: drugs.drugKey!
+                        );
+                      }
+                  );
 
+              });
 
-           );
-
-
-
-          // return GridView.builder(
-          //     itemCount: 6,
-          //     padding: const EdgeInsets.all(12),
-          //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          //       childAspectRatio: orientation == Orientation.portrait ?
-          //       ((orientSize.width / 2) / 205) : ((orientSize.width / 2) / 290),
-          //       crossAxisSpacing: 10,
-          //       mainAxisSpacing: 10,
-          //       crossAxisCount: orientation == Orientation.portrait ? 2 : 3
-          //     ),
-          //     itemBuilder: (BuildContext context, int index){
-          //       return const CategoryListItem();
-          //     }
-          // );
         }),
-
     );
   }
   @override
@@ -74,14 +105,23 @@ class _DrugCategoryState extends State<DrugCategory>
 }
 
 class CategoryListItem extends StatefulWidget {
-  const CategoryListItem({Key? key}) : super(key: key);
-
+  final String imgurl;
+  final String drugName;
+  final String drugPrice;
+  final String drgManufact;
+  final String drugKey;
+  const CategoryListItem({Key? key,
+  required this.imgurl,
+  required this.drugName,
+  required this.drugPrice,
+  required this.drgManufact,
+  required this.drugKey
+  }) : super(key: key);
   @override
   State<CategoryListItem> createState() => _CategoryListItemState();
 }
 class _CategoryListItemState extends State<CategoryListItem> {
   int counter = 0;
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -102,12 +142,20 @@ class _CategoryListItemState extends State<CategoryListItem> {
                 Container(
                   width: 90,
                   height: 70,
-                  child: Image.asset("assets/dtest.jpg",fit: BoxFit.cover,),
+                  child: CachedNetworkImage(
+                    imageUrl: widget.imgurl,
+                    fit: BoxFit.cover,
+                    height: MediaQuery.of(context).size.height,
+                    placeholder: (context,url) => Container(color: Colors.grey[300],),
+                    errorWidget: (context,url,error) => Container(
+                      color: Colors.grey[300],
+                      child: const Icon(Icons.error),
+                    ),
+                  ),
                 ),
-                Text("Ibuprofen"),
-                Text("Box of 100 capsules"),
-                Text("GHC 104.00"),
-
+                Text(widget.drugName),
+                Text('Mfg: ' +widget.drgManufact),
+                Text('GHC ' +widget.drugPrice),
               ],
             ),
           ),
@@ -125,6 +173,7 @@ class _CategoryListItemState extends State<CategoryListItem> {
                   onTap: (){
                     setState(() {
                       counter = counter + 1;
+                      // addToCart();
                     });
                   },
                   child: Container(
@@ -157,15 +206,20 @@ class _CategoryListItemState extends State<CategoryListItem> {
                   ),
                 ),
           )
-
-
-
-
         ],
       ),
     );
   }
 }
+
+Future<bool> addToCart() async{
+  final DatabaseReference dbreference = FirebaseDatabase.instance.ref().child('Cart-Items');
+  // await dbreference.child(cate).set(drug!.toJson());
+  return true;
+}
+
+
+
 
 
 
