@@ -9,7 +9,6 @@ import 'package:netlyfe/controllers/phone_auth_controller.dart';
 import 'package:netlyfe/services/net_theme.dart';
 import 'package:netlyfe/views/home_view.dart';
 import 'package:netlyfe/views/login_view.dart';
-import 'package:netlyfe/views/onboard_screen_view.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({Key? key}) : super(key: key);

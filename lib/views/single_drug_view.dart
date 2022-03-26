@@ -175,7 +175,6 @@ import 'package:netlyfe/widgets/custom_text.dart';
 
 class SingleDrugView extends StatelessWidget {
   final Drugs drugs;
-
   const SingleDrugView({Key? key, required this.drugs}) : super(key: key);
   @override
   Widget build(BuildContext context) {
