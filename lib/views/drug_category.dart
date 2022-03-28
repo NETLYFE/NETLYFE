@@ -2,11 +2,13 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:logger/logger.dart';
 import 'package:netlyfe/controllers/drugs_controller.dart';
 import 'package:netlyfe/models/drugs_model.dart';
 import 'package:netlyfe/services/net_theme.dart';
+import 'package:netlyfe/views/drug_details.dart';
 import 'package:netlyfe/views/single_drug_view.dart';
 
 class DrugCategory extends StatefulWidget {
@@ -75,7 +77,12 @@ class _DrugCategoryState extends State<DrugCategory>
                   itemCount: snapshot.data == null ? 0 : snapshot.data!.length,
                   itemBuilder: (context, index) {
                     final drugs = snapshot.data!.toList()[index];
-                    return SingleDrugView(drugs: drugs);
+                    return InkWell(
+                      child: CategoryListItem(drugs: drugs),
+                      onTap: () {
+                        Get.to(DrugDetailsView(drugs: drugs));
+                      },
+                    );
                     // return CategoryListItem(
                     //   drugs: drugs,
                     // );
