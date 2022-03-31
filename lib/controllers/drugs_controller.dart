@@ -12,8 +12,7 @@ abstract class DrugsFunctions {
       String? cartItemImageUrl,
       String? cartItemMfr,
       String? cartItemCounter,
-      String? cartItemKey
-      });
+      String? cartItemKey});
   Future<bool> updateCartItems({String? counter, String? price});
 }
 
@@ -35,8 +34,7 @@ class DrugsController implements DrugsFunctions {
       String? cartItemImageUrl,
       String? cartItemMfr,
       String? cartItemCounter,
-      String? cartItemKey
-      }) async {
+      String? cartItemKey}) async {
     try {
       final cartDocument = cartCollection.doc(cartItemKey);
       final cartItems = CartItems(

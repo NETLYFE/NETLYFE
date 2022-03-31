@@ -13,6 +13,8 @@ const Color orangeClr = Color.fromRGBO(250, 151, 84, 1);
 const Color pinkishClr = Color(0xFFff4667);
 const Color darkGreyClr = Color(0xFF121212);
 const Color darkHeaderClr = Color(0xFF424242);
+const kBGColor = Color(0xFFf6f6f6);
+const kWhiteColor = Color(0xFFFFFFFF);
 
 //DRUG CATEGORY CART
 const Color catboxColor = Color.fromRGBO(243, 243, 243, 1);
@@ -91,15 +93,15 @@ TextStyle get detailstitleStyle {
 TextStyle get detailsubtitleStyle {
   return GoogleFonts.lato(
       textStyle: TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w400,
-          color: Get.isDarkMode ? Colors.grey[100] : subtitleColor));
+          fontSize: 15,
+          fontWeight: FontWeight.w500,
+          color: Get.isDarkMode ? Colors.grey[200] : subtitleColor));
 }
 
 TextStyle get detaildescriptionStyle {
   return GoogleFonts.lato(
       textStyle: TextStyle(
-          fontSize: 12,
+          fontSize: 14,
           fontWeight: FontWeight.w400,
           color: Get.isDarkMode ? Colors.grey[100] : subtitleColor));
 }

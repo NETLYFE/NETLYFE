@@ -77,15 +77,14 @@ class _DrugCategoryState extends State<DrugCategory>
                   itemCount: snapshot.data == null ? 0 : snapshot.data!.length,
                   itemBuilder: (context, index) {
                     final drugs = snapshot.data!.toList()[index];
-                    return InkWell(
-                      child: CategoryListItem(drugs: drugs),
-                      onTap: () {
-                        Get.to(DrugDetailsView(drugs: drugs));
+                    return DrugCategoryListItem(
+                      drugs: drugs,
+                      ontap: () {
+                        Get.to(() => DrugDetailsView(
+                              drugs: drugs,
+                            ));
                       },
                     );
-                    // return CategoryListItem(
-                    //   drugs: drugs,
-                    // );
                   });
             });
       }),
