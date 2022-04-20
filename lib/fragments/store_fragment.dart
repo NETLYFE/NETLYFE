@@ -6,6 +6,7 @@ import 'package:netlyfe/Utils/list_objects.dart';
 import 'package:netlyfe/Utils/strings.dart';
 import 'package:netlyfe/services/net_theme.dart';
 import 'package:netlyfe/services/theme_services.dart';
+import 'package:netlyfe/test/upload_multiple_images.dart';
 import 'package:netlyfe/views/drug_category.dart';
 import 'package:netlyfe/widgets/c_container1.dart';
 import 'package:netlyfe/widgets/category_container.dart';
@@ -18,7 +19,8 @@ class StoreFragment extends StatefulWidget {
   _StoreFragmentState createState() => _StoreFragmentState();
 }
 
-class _StoreFragmentState extends State<StoreFragment> with AutomaticKeepAliveClientMixin{
+class _StoreFragmentState extends State<StoreFragment>
+    with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +54,11 @@ class _StoreFragmentState extends State<StoreFragment> with AutomaticKeepAliveCl
             const SizedBox(
               height: 10,
             ),
-            const UploadPresContainer(),
+            InkWell(
+                onTap: () {
+                  Get.to(() => const UploadMultipLeImagesView());
+                },
+                child: const UploadPresContainer()),
             const SizedBox(
               height: 16,
             ),
@@ -78,7 +84,8 @@ class _StoreFragmentState extends State<StoreFragment> with AutomaticKeepAliveCl
                     catImg: diseaseList[index].img,
                     catTitle: diseaseList[index].name,
                     onTap: () {
-                      Get.to(() => DrugCategory(category: diseaseList[index].name));
+                      Get.to(() =>
+                          DrugCategory(category: diseaseList[index].name));
                       print(diseaseList[index].slug);
                     },
                   );
@@ -118,7 +125,7 @@ class _StoreFragmentState extends State<StoreFragment> with AutomaticKeepAliveCl
           ],
         ));
   }
+
   @override
   bool get wantKeepAlive => true;
-
 }

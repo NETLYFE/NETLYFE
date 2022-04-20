@@ -7,9 +7,7 @@ import 'package:netlyfe/widgets/average_container.dart';
 import 'package:netlyfe/widgets/custom_bp_datatable.dart';
 import 'package:netlyfe/widgets/custom_floating_action_btn.dart';
 import 'package:netlyfe/widgets/custom_bp_sheet.dart';
-import 'package:netlyfe/widgets/login_form_field_container.dart';
 import 'package:netlyfe/widgets/stages_container.dart';
-import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 class BPMonitorView extends StatelessWidget {
   const BPMonitorView({Key? key}) : super(key: key);
@@ -40,7 +38,8 @@ class BPMonitorView extends StatelessWidget {
                   values: "155/95",
                   avgImg: StringData.bpavg,
                 ),
-              ]),
+              ]
+            ),
           const SizedBox(height: 16),
           SingleChildScrollView(
             child: Row(
